@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mid_ex_flutter/view/screens/home_screen.dart';
+import 'package:mid_ex_flutter/view/screens/login_screen.dart';
 import 'package:mid_ex_flutter/view/screens/splash_screen.dart';
 
 void main() {
@@ -19,5 +20,6 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(name: "/splash", page: () => SplashScreen()),
         GetPage(name: "/home", page: () => HomeScreen()),
+        GetPage(name: "/login", page: () => LoginScreen()),
       ],
     );}}
