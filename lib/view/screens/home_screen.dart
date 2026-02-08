@@ -16,10 +16,16 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Color(0xfffcfcfc),
       appBar: AppBar(
-        title: Obx(() => Text(
-          'Order Items (${controller.orders.length})',
-        )),
+        title:  Center(
+          child: Text(
+            'Order Items',
+            style: TextStyle(
+              fontSize: 15
+            ),
+          ),
+        )
       ),
 
       floatingActionButton: FloatingActionButton(
@@ -39,14 +45,25 @@ class HomeScreen extends StatelessWidget {
                 const Text(
                   'My Order',
                   style:
-                  TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color(
+                      0xff252c3e)),
                 ),
-                Text(
-                  'Total price ${controller.totalPrice.toStringAsFixed(1)}\$',
-                  style: const TextStyle(
-                      color: Colors.red,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
+                Row(
+                  children: [
+                    const Text(
+                      'Total price ',
+                      style:
+                      TextStyle(fontSize: 18, fontWeight: FontWeight.w600,color: Color(
+                          0xff252c3e)),
+                    ),
+                    Text(
+                      '${controller.totalPrice.toStringAsFixed(1)}\$',
+                      style: const TextStyle(
+                          color: Colors.red,
+                          fontSize: 18,
+                          fontWeight: FontWeight.w600),
+                    ),
+                  ],
                 ),
               ],
             )),
@@ -55,13 +72,16 @@ class HomeScreen extends StatelessWidget {
           Expanded(
             child: GetBuilder<OrderController>(
               builder: (_) {
-                return ListView.builder(
-                  itemCount: controller.orders.length,
-                  itemBuilder: (context, index) {
-                    final meal = controller.orders[index];
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: ListView.builder(
+                    itemCount: controller.orders.length,
+                    itemBuilder: (context, index) {
+                      final meal = controller.orders[index];
 
-                    return OrderItemWidget(order: controller.orders[index], onDelete:()=> controller.deleteItem(index));
-                  },
+                      return OrderItemWidget(order: controller.orders[index], onDelete:()=> controller.deleteItem(index));
+                    },
+                  ),
                 );
               },
             ),

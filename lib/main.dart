@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       create: (_) => LoginProvider(),
       child: GetMaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: "/login",
+        initialRoute: "/splash",
         getPages: [
           GetPage(name: "/splash", page: () => SplashScreen()),
           GetPage(name: "/home", page: () => HomeScreen()),

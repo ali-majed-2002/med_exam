@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mid_ex_flutter/providers/login_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -83,7 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         controller: passwordController,
                         obscureText: true,
                         decoration: const InputDecoration(
-                          hintText: 'Password',
+                          hintText: '**********',
                           hintStyle: TextStyle(
                             color: Colors.grey,
                               fontSize: 12
@@ -99,7 +100,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           'Forgot Password?',
                           style: TextStyle(
                             color: Color(0xfff58632),
-                            fontSize: 20,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -118,9 +119,11 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                           onPressed: () {
                             bool success = loginProvider.login(
+
                               emailController.text,
                               passwordController.text,
                             );
+                            Get.toNamed("/home");
                             Fluttertoast.showToast(
                               msg: success
                                   ? "Login success"
